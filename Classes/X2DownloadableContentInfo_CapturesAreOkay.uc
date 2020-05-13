@@ -42,19 +42,6 @@ static event OnPreMission(XComGameState StartGameState, XComGameState_MissionSit
 {
 	// Not working. Never called.
 	`log("             CapturesAreOkay: OnPreMission() called", , 'XCom_XP');
-
-	// function RegisterForEvents()
-// that may help me find a hook. I need to reset the # of unconscious enemies per agent here
-// how will this work if someone reloads a savegame in the middle of a mission? like, they may have my mod installed, start a mission, save, then reload if something goes wrong. 
-// so we really should have it attached to the units...
-
-// I guess if reloading, need to get it from history; 
-// so when do we reset? 
-// well, after missionawardxp
-
-// I guess when reloading any save, it should reset it; then figure out from history if in a mission. and reset after missionawardxp. that should do it.
-// i'm not sure I can detect reloads from saves reliably, but the guy who made the kill counter obviously figured it out
-
 }
 
 /// <summary>
