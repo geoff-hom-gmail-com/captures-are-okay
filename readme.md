@@ -1,6 +1,8 @@
 # CapturesAreOkay README
 
-This is the README for the XCOM mod CapturesAreOkay. After writing up a brief description, we recommend including the following sections.
+This is the README for the XCOM mod CapturesAreOkay. 
+
+This mod is for XCOM: Chimera Squad. The game has a bug where kills are rewarded XP but captures aren't. What kind of message is that sending? This mod is to fix that bug.
 
 ## Features
 
