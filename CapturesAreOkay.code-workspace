@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "D:/Program Files (x86)/Steam/steamapps/common/XCOM-Chimera-Squad-SDK/XComGame/Content/Mods/CapturesAreOkay"
+		},		
+		{
+			"path": "D:/Program Files (x86)/Steam/steamapps/common/XCOM-Chimera-Squad-SDK/Development/Src"
+		},
+		{
+			"path": "D:/Program Files (x86)/Steam/steamapps/common/XCOM-Chimera-Squad-SDK/XComGame/Config"
+		},
+		{
+			"path": "D:/Program Files (x86)/Steam/steamapps/common/XCOM-Chimera-Squad-SDK/XComGame/Localization/INT"
+		}
+	],
+	"settings": {}
+}
