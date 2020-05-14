@@ -121,7 +121,7 @@ static function AwardMissionXP(XComGameState ModifyStateObject, XComGameState_St
 		TotalCaptures += NumCaptures;
 		NumKillsAndCaptures = NumKills + NumCaptures;
 
-		`Log("** Unit [" $ Unit.GetNickName(true) $ "] [" $ Unit.ObjectID $ "]", , 'XCom_XP');
+		`Log("** Unit [" $ Unit.GetNickName(true) $ "]", , 'XCom_XP');
 		`Log("**** Kills [" $ NumKills $ "]", , 'XCom_XP');
 		`Log("**** Captures [" $ NumCaptures $ "]", , 'XCom_XP');
 		`Log("**** Kills + Captures [" $ NumKillsAndCaptures $ "]", , 'XCom_XP');
@@ -145,6 +145,9 @@ static function AwardMissionXP(XComGameState ModifyStateObject, XComGameState_St
 		UnitTotalXP = Round(fTotalXP);
 		`Log("**** Total XP [" $ UnitTotalXP $ "]", , 'XCom_XP');
 		Unit.AddXp(UnitTotalXP);
+
+		// Captures have been counted, so reset. 
+		Unit.WetWorkKills = 0;
 	}
 
 	// So player can check log against what the tactical end said earlier. We show kills before captures because the game shows it that way.
