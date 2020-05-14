@@ -15,6 +15,8 @@ static function AwardMissionXP(XComGameState ModifyStateObject, XComGameState_St
 	local int NumCaptures, NumKillsAndCaptures;
 	local int TotalKills, TotalCaptures;
 
+	// TODO: compile/run, then commit. Then clean this up.
+	
 	// local XComGameStateHistory History;
 	// local XComGameState_BattleData BattleData;
 	// local array<StateObjectReference> CapturedUnitRefs;
