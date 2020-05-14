@@ -1,7 +1,15 @@
 {
-  "publishingID": 0,
-  "Title": "CapturesAreOkay",
-  "Description": "Testing description in JSON",
+  "publishingID": 2095997048,
+  "Title": "Captures Are Okay",
+  "Description": "The game has a bug where kills are rewarded XP but captures aren't. 
+  
+  What kind of message is that sending? 
+  
+  This mod is to fix that bug.
+  
+  The code and a detailed readme are at https://github.com/geoffhom/captures-are-okay.
+  
+  This is my first mod!",
   "Tags": [
     "Tag1",
     "Tag2"
