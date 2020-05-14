@@ -18,9 +18,11 @@ On the bright side, if you install the mod and load a game mid-mission, it shoul
 
 Note: OnPreMission() and OnPostMission() hooks don't work in Chimera Squad.
 
-> Tip: The mod logs XP gains in the Balance log. There is also a mod in the Steam Workshop to show XP in the Armory. You can combine these to make sure the mod is working. If you find a bug, please include such logs/Armory pics.
+> Tip: The mod logs XP gains in the Balance log. There is also a mod in the Steam Workshop to show XP in the Armory. You can combine these to make sure the mod is working. If you find a bug, please include such logs/Armory pics. You can post to reddit (e.g., xcom2mods) or email me at geoffhom@gmail.com.
 
 > Tip: There's a bug in XComGameState_Unit.OnUnitUnconscious(). What it refers to as the "Captor" is actually the unit that was knocked unconscious. So don't trust CapturedUnitsLastTurn and CapturedUnits.
+
+> Tip: Kill/Capture XP is rounded. So 2 kills/captures = 0.5, rounded to 1 XP. 5 kills/captures = 1.25, rounded to 1 XP.
 
 ## Requirements
 
