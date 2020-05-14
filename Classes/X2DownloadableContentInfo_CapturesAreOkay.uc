@@ -41,7 +41,7 @@ static event InstallNewCampaign(XComGameState StartState)
 static event OnPreMission(XComGameState StartGameState, XComGameState_MissionSite MissionState)
 {
 	// Not working. Never called.
-	`log("             CapturesAreOkay: OnPreMission() called", , 'XCom_XP');
+	`log("             CapturesAreOkay: OnPreMission() called.", , 'XCom_XP');
 }
 
 /// <summary>
@@ -49,33 +49,7 @@ static event OnPreMission(XComGameState StartGameState, XComGameState_MissionSit
 /// </summary>
 static event OnPostMission()
 {
-}
-
-
-
-	// hmm, if I override the unit class, then anything new should be made with my class. the issue is that agents must be made at the start of a campaign, as it tracks everything. i'd have to find a way to upgrade them when first loading a save. also, if the mod was ever uninstalled, wouldn't that destroy the save?
-
-	// I could do a screen listener to do a reset in strategy. so, how is the kill counter working from history?
-
-	// this `HISTORY thing is interesting. perhaps I can grab that in awardmissionxp and just calc from there? 
-	// what is XComGameStateHistory ?
-	// what is XComGameState_BattleData?
-	// andromedons could also be an issue, as it may be two separate units? just an outlier
-
-	// shucks; I think it sends the captor data only when a unit is KO'd. So it has to be intercepted there?! Then a savegame mid-mission won't work. 
-	// though it's definitely saving how many captures a unit/agent has had thru the game
-
-	// well, battledata does have a list of units who were captured last mission; does that unit store data about who KO'd it? 
-	// LastDamagedByUnitID ?!!
-	// ugh; I don't see the list of troops in battledata. just agents
-
-	// note that a bleeding-out agent can be saved and thus would be unconscious. so we just need to check that the unit who ko'd it is an agent
-	// I could also hack a solution. Since it does record the number of capturedEnemies in the mission
-	// no wait. bd has capturedunc units; and that list will account for andromedon, or bleeding out heroes
-
-	// ugh, how do I access my array statically? or from one function to the listener...? there aren't static vars, unless maybe in XComGameInfo. do I subclass that? subclass gameinfo?
-	// well, I guess I could go up a level, to the class that calls awardMissionXP(). Then I could call a new function and pass in something. So then that class needs to be able to access my eventlistener class. Same issue?
-	
+}	
 
 /// <summary>
 /// Called when the player is doing a direct tactical->tactical mission transfer. Allows mods to modify the

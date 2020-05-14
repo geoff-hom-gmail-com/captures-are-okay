@@ -16,7 +16,7 @@ static function AwardMissionXP(XComGameState ModifyStateObject, XComGameState_St
 	local int TotalKills, TotalCaptures;
 
 	// TODO: compile/run, then commit. Then clean this up.
-	
+
 	// local XComGameStateHistory History;
 	// local XComGameState_BattleData BattleData;
 	// local array<StateObjectReference> CapturedUnitRefs;
@@ -25,7 +25,7 @@ static function AwardMissionXP(XComGameState ModifyStateObject, XComGameState_St
 	// local XComGameState_Unit CapturedUnit;
 	
 	//testing
-	`log("             CapturesAreOkay: AwardMissionXP() called", , 'XCom_XP');
+	`log("             CapturesAreOkay: AwardMissionXP() called.", , 'XCom_XP');
 
 
     // History = `XCOMHISTORY;
@@ -123,6 +123,7 @@ static function AwardMissionXP(XComGameState ModifyStateObject, XComGameState_St
 		TotalCaptures += NumCaptures;
 		NumKillsAndCaptures = NumKills + NumCaptures;
 
+		`log(" ", , 'XCom_XP');
 		`Log("** Unit [" $ Unit.GetNickName(true) $ "]", , 'XCom_XP');
 		`Log("**** Kills [" $ NumKills $ "]", , 'XCom_XP');
 		`Log("**** Captures [" $ NumCaptures $ "]", , 'XCom_XP');

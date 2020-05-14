@@ -11,6 +11,7 @@ The trivial way for Firaxis to fix this bug is to add a variable like XComGameSt
 As mods can't modify XComGameState_Unit directly, I'm using a workaround. I override AwardMissionXP(), and I get the captures count via XComGameState_Unit.WetWorkKills. How/why? It's an unused variable. I reset the variable after the event "OnUnitBeginPlay." 
 
 The variable is set after the event "TacticalGameEnd." 
+I'm assuming the captor is the same as unconsciousUnit.LastDamagedByUnitID. So far, that seems to work.
 
 Note: I wanted to set WetWorkKills after the event "UnitUnconscious." But changes to WetWorkKills wouldn't persist. I don't know enough about GameStates, etc. to know how to fix that.
 On the bright side, if you install the mod and load a game mid-mission, it should run fine!

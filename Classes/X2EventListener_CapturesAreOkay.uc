@@ -7,7 +7,7 @@ static function array<X2DataTemplate> CreateTemplates()
 {
     local array<X2DataTemplate> Templates;
 
-    `log("             CapturesAreOkay: CreateTemplates() called", , 'XCom_XP');
+    `log("             CapturesAreOkay: CreateTemplates() called.", , 'XCom_XP');
 
     Templates.AddItem(CreateUnitBeginPlayTemplate());
     // Templates.AddItem(CreateUnitUnconsciousTemplate());
@@ -29,16 +29,16 @@ static function X2EventListenerTemplate CreateUnitBeginPlayTemplate()
 }
 
 // Listen for when a unit is knocked unconscious, to increment the captor's count.
-static function X2EventListenerTemplate CreateUnitUnconsciousTemplate()
-{
-	local X2EventListenerTemplate Template;
+// static function X2EventListenerTemplate CreateUnitUnconsciousTemplate()
+// {
+// 	local X2EventListenerTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2EventListenerTemplate', Template, 'UnitUnconscious');
-	Template.RegisterInTactical = true;
-	Template.AddEvent('UnitUnconscious', OnUnitUnconscious);
+// 	`CREATE_X2TEMPLATE(class'X2EventListenerTemplate', Template, 'UnitUnconscious');
+// 	Template.RegisterInTactical = true;
+// 	Template.AddEvent('UnitUnconscious', OnUnitUnconscious);
 
-	return Template;
-}
+// 	return Template;
+// }
 
 // Listen for a time to count the mission's captures for each agent. OnPostMission() hook in X2DownloadableContentInfo_CapturesAreOkay not working (5.13.2020).
 static function X2EventListenerTemplate CreateTacticalGameEndTemplate()
@@ -68,19 +68,19 @@ static protected function EventListenerReturn OnUnitBeginPlay(Object EventData, 
 
 // This is bugged, so we're not using it. Captor.WetWorkKills isn't persisting. E.g., KO two enemies in one mission, and it'll report just 1. I'm sure it's an easy fix, but I don't know how, and documentation is lacking. Going thru event "TacticalGameEnd" instead.
 // Increase the captor's capture count for this mission.
-static protected function EventListenerReturn OnUnitUnconscious(Object EventData, Object EventSource, XComGameState GameState, Name Event, Object CallbackData)
-{
-	local XComGameState_Unit CapturedUnit, Captor;
+// static protected function EventListenerReturn OnUnitUnconscious(Object EventData, Object EventSource, XComGameState GameState, Name Event, Object CallbackData)
+// {
+// 	local XComGameState_Unit CapturedUnit, Captor;
 
-    CapturedUnit = XComGameState_Unit(EventData);
-    Captor = XComGameState_Unit(GameState.ModifyStateObject(class'XComGameState_Unit', CapturedUnit.LastDamagedByUnitID));
-    Captor.WetWorkKills++;
+//     CapturedUnit = XComGameState_Unit(EventData);
+//     Captor = XComGameState_Unit(GameState.ModifyStateObject(class'XComGameState_Unit', CapturedUnit.LastDamagedByUnitID));
+//     Captor.WetWorkKills++;
     
-    // "[Axiom] knocked out [Purifier]. Axiom KOs [1]."
-    `log("             CapturesAreOkay: [" $ Captor.GetNickName(true) $ "] knocked out [" $ CapturedUnit.GetFullName() $ "]. " $ Captor.GetNickName(true) $ " KOs [" $ Captor.WetWorkKills $ "].", , 'XCom_XP');
+//     // "[Axiom] knocked out [Purifier]. Axiom KOs [1]."
+//     `log("             CapturesAreOkay: [" $ Captor.GetNickName(true) $ "] knocked out [" $ CapturedUnit.GetFullName() $ "]. " $ Captor.GetNickName(true) $ " KOs [" $ Captor.WetWorkKills $ "].", , 'XCom_XP');
 
-	return ELR_NoInterrupt;
-}
+// 	return ELR_NoInterrupt;
+// }
     
 // Count the mission's captures for each agent.
 static protected function EventListenerReturn OnTacticalGameEnd(Object EventData, Object EventSource, XComGameState GameState, Name Event, Object CallbackData)
@@ -91,7 +91,7 @@ static protected function EventListenerReturn OnTacticalGameEnd(Object EventData
     local XComGameState_Unit CapturedUnit, DamagerUnit;
     local int i;
     
-    `log("             CapturesAreOkay: OnTacticalGameEnd() called", , 'XCom_XP');
+    `log("             CapturesAreOkay: OnTacticalGameEnd() called.", , 'XCom_XP');
 
     History = `XCOMHISTORY;
 	BattleData = XComGameState_BattleData(History.GetSingleGameStateObjectForClass(class'XComGameState_BattleData'));
@@ -101,8 +101,6 @@ static protected function EventListenerReturn OnTacticalGameEnd(Object EventData
     The only ways to knock an enemy unconscious require doing damage. Subdue. Zephyr's melee attack. Even Axiom's Smash has to hit before it can apply Unconscious.
     To be safer, we'll log the damager's name.
     */
-
-
     for (i = 0; i < CapturedUnitRefs.Length; ++i)
     {
 		CapturedUnit = XComGameState_Unit(GameState.ModifyStateObject(class'XComGameState_Unit', CapturedUnitRefs[i].ObjectID));
@@ -115,5 +113,3 @@ static protected function EventListenerReturn OnTacticalGameEnd(Object EventData
 
 	return ELR_NoInterrupt;
 }
-
-    // if so, then next can improve logging so it's more user friendly (see unitunc listener)
