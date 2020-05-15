@@ -24,6 +24,8 @@ Note: OnPreMission() and OnPostMission() hooks don't work in Chimera Squad.
 
 > Tip: Kill/Capture XP is rounded. So 2 kills/captures = 0.5, rounded to 1 XP. 5 kills/captures = 1.25, rounded to 1 XP.
 
+> Tip: Mod code is at https://github.com/geoffhom/captures-are-okay. 
+
 ## Requirements
 
 The mod overrides X2ExperienceConfig.AwardMissionXP(). 
@@ -31,4 +33,3 @@ The mod overrides X2ExperienceConfig.AwardMissionXP().
 It also writes to XComGameState_Unit.WetWorkKills, as I think this is unused in Chimera Squad.
 
 This mod listens to the events "OnUnitBeginPlay" and "TacticalGameEnd."
-
