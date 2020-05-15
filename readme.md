@@ -2,7 +2,7 @@
 
 This is the README for the XCOM: Chimera Squad mod, 'Captures are Okay.' 
 
-The game has a bug where kills are rewarded XP but captures aren't. What kind of message is that sending? This mod is to fix that bug.
+The game has a bug where kills are rewarded 0.25 XP, but captures are rewarded 0 XP. What kind of message is that? This mod fixes that bug.
 
 ## Features
 
@@ -18,11 +18,13 @@ On the bright side, if you install the mod and load a game mid-mission, it shoul
 
 Note: OnPreMission() and OnPostMission() hooks don't work in Chimera Squad.
 
-> Tip: The mod logs XP gains in the Balance log. There is also a mod in the Steam Workshop to show XP in the Armory. You can combine these to make sure the mod is working. If you find a bug, please include such logs/Armory pics. You can post to reddit (e.g., xcom2mods) or email me at geoffhom@gmail.com.
+> Tip: The mod logs XP gains in the Balance log. If you find a bug, please include such logs/Armory pics. You can post to reddit (e.g., xcom2mods) or email me at geoff.hom@gmail.com.
 
 > Tip: There's a bug in XComGameState_Unit.OnUnitUnconscious(). What it refers to as the 'Captor' is actually the unit that was knocked unconscious. So don't trust CapturedUnitsLastTurn and CapturedUnits.
 
 > Tip: Kill/Capture XP is rounded. So 2 kills/captures = 0.5, rounded to 1 XP. 5 kills/captures = 1.25, rounded to 1 XP.
+
+> Tip: You can modify XP settings in XComGameData_XpData.ini. There are 3 Acts plus the Finale.
 
 > Tip: Mod code is at https://github.com/geoffhom/captures-are-okay. 
 

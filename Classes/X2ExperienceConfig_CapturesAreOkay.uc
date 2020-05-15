@@ -35,14 +35,14 @@ static function AwardMissionXP(XComGameState ModifyStateObject, XComGameState_St
 	// Base mission XP awarded to all units
 	fScaledMissionXP = float(MissionXP) * XPScalar;
 
-	`Log("** CurrentAct [" $ CurrentAct + 1 $ "]", , 'XCom_XP');
-	`Log("** MissionXP [" $ fScaledMissionXP $ "]", , 'XCom_XP');
-	`Log("** MaxKillXP per Agent [" $ fMaxKillXP $ "]", , 'XCom_XP');
+	`Log("** CurrentAct [" $ CurrentAct + 1 $ "].", , 'XCom_XP');
+	`Log("** MissionXP [" $ fScaledMissionXP $ "].", , 'XCom_XP');
+	`Log("** MaxKillXP per Agent [" $ fMaxKillXP $ "].", , 'XCom_XP');
 
 	if (bIgnoreMissionXP) // if the mission was aborted etc, no mission XP
 	{
 		fScaledMissionXP = 0;
-		`Log("** MissionXP [" @ fScaledMissionXP @ "] changed because of bIgnoreMissionXP (aborted likely)", , 'XCom_XP');
+		`Log("** MissionXP [" @ fScaledMissionXP @ "] changed because of bIgnoreMissionXP (aborted likely).", , 'XCom_XP');
 	}
 
 	for (i = 0; i < MissionAction.AssignedUnitRefs.Length; ++i)
@@ -57,17 +57,17 @@ static function AwardMissionXP(XComGameState ModifyStateObject, XComGameState_St
 		NumKillsAndCaptures = NumKills + NumCaptures;
 
 		`log(" ", , 'XCom_XP');
-		`Log("** Unit [" $ Unit.GetNickName(true) $ "]", , 'XCom_XP');
-		`Log("**** Kills [" $ NumKills $ "]", , 'XCom_XP');
-		`Log("**** Captures [" $ NumCaptures $ "]", , 'XCom_XP');
-		`Log("**** Kills + Captures [" $ NumKillsAndCaptures $ "]", , 'XCom_XP');
+		`Log("** Unit [" $ Unit.GetNickName(true) $ "].", , 'XCom_XP');
+		`Log("**** Kills [" $ NumKills $ "].", , 'XCom_XP');
+		`Log("**** Captures [" $ NumCaptures $ "].", , 'XCom_XP');
+		`Log("**** Kills + Captures [" $ NumKillsAndCaptures $ "].", , 'XCom_XP');
 
 		if (NumKillsAndCaptures > 0)
 		{
 			fScaledKillsXP = (float(NumKillsAndCaptures) * fKillsXP) * XPScalar;
 			if (fScaledKillsXP > fMaxKillXP)
 			{
-				`Log("**** Kill/Capture XP [" $ fScaledKillsXP $ "] clamped to max kill XP", , 'XCom_XP');
+				`Log("**** Kill/Capture XP [" $ fScaledKillsXP $ "] clamped to max kill XP.", , 'XCom_XP');
 				fScaledKillsXP = fMaxKillXP;
 			}
 		}
@@ -75,17 +75,22 @@ static function AwardMissionXP(XComGameState ModifyStateObject, XComGameState_St
 		{
 			fScaledKillsXP = 0;
 		}
-		`Log("**** Kill + Capture XP [" $ fScaledKillsXP $ "]", , 'XCom_XP');
+		`Log("**** Kill + Capture XP [" $ fScaledKillsXP $ "].", , 'XCom_XP');
 
 		fTotalXP = fScaledMissionXP + fScaledKillsXP;
 		UnitTotalXP = Round(fTotalXP);
-		`Log("**** Total XP [" $ UnitTotalXP $ "]", , 'XCom_XP');
+		`Log("**** Total XP [" $ UnitTotalXP $ "].", , 'XCom_XP');
+
+		// "**** XP before [57]."
+		`log("**** XP before [" $ Unit.GetXPValue() $ "].", , 'XCom_XP');
 		Unit.AddXp(UnitTotalXP);
+		// "**** XP after [65]."
+		`log("**** XP after [" $ Unit.GetXPValue() $ "].", , 'XCom_XP');
 
 		// Captures have been counted, so reset. 
 		Unit.WetWorkKills = 0;
 	}
 
 	// So player can check log against what the tactical end said earlier. We show kills before captures because the game shows it that way.
-	`log("             CapturesAreOkay: Mission Kills [" $ TotalKills $ "], Mission Captures [" $ TotalCaptures $ "]", , 'XCom_XP');
+	`log("             CapturesAreOkay: Mission Kills [" $ TotalKills $ "], Mission Captures [" $ TotalCaptures $ "].", , 'XCom_XP');
 }
